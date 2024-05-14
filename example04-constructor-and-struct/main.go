@@ -1,63 +1,45 @@
+// make student admin system
+
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-type toyota struct {
-	name     string
-	price    float64
-	discount float64
-	color    string
+type student struct {
+	name string
+	age  int
 }
 
-func (t *toyota) showName() string {
-	return t.name
+func (s *student) setName(name string) {
+	s.name = name
 }
 
-func (t *toyota) getPrice() float64 {
-	return t.price * t.discount
+func (s *student) setAge(age int) {
+	s.age = age
+}
+func (s *student) getName() string {
+	return s.name
 }
 
-func (t *toyota) getDiscount() float64 {
-	return t.discount
-}
-
-func (t *toyota) getColor() string {
-	return t.color
-}
-
-func (t *toyota) setColor(color string) {
-	t.color = color
-}
-
-func (t toyota) updateColor(color string) {
-	t.color = color
-}
-
-func newCar(name string, price float64, discount float64, color string) *toyota {
-	return &toyota{
-		name:     name,
-		price:    price,
-		discount: discount,
-		color:    color,
-	}
+func (s *student) getAge() int {
+	return s.age
 }
 
 func main() {
-	car := &toyota{
-		name:     "car1",
-		price:    4000,
-		discount: 0.8,
-		color:    "white",
+	var tn string
+	var ta int
+
+	st := student{
+		name: "default",
+		age:  0,
 	}
 
-	fmt.Println(car.getPrice())
-	car.updateColor("blue")
-	fmt.Println(car.getColor())
-	car.setColor("red")
-	fmt.Println(car.getColor())
+	fmt.Print("학생의 이름을 입력하세요: ")
+	fmt.Scanln(&tn)
+	fmt.Print("학생의 나이를 입력하세요: ")
+	fmt.Scanln(&ta)
 
-	car2 := newCar("car2", 6000, 0.7, "orange")
-	fmt.Println(car2.getColor())
+	st.setName(tn)
+	st.setAge(ta)
+
+	fmt.Printf("학생 정보:\n이름: %s\n나이: %d", st.getName(), st.getAge())
 }
