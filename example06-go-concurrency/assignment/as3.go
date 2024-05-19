@@ -21,7 +21,7 @@ func receive(ch chan int, wg *sync.WaitGroup) {
 	}
 }
 
-func main() {
+func as3() {
 	wg := sync.WaitGroup{}
 	ch := make(chan int, 5)
 
