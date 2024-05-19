@@ -15,7 +15,7 @@ func saySecondHello(wg *sync.WaitGroup) {
 	wg.Done()
 }
 
-func main() {
+func as1() {
 	wg := sync.WaitGroup{}
 	for i := 0; i < 5; i++ {
 		wg.Add(2)
