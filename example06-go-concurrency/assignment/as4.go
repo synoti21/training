@@ -24,7 +24,7 @@ func second(ch chan string, wg *sync.WaitGroup) {
 	close(ch)
 }
 
-func main() {
+func as4() {
 	wg := sync.WaitGroup{}
 	ch1 := make(chan string) //all senders are blocked because of unbuffered channel
 	ch2 := make(chan string) //which caused deadlock between all goroutines
