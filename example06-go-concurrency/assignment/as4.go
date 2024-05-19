@@ -24,14 +24,17 @@ func second(ch chan string, wg *sync.WaitGroup) {
 	close(ch)
 }
 
-func as4() {
+func main() {
 	wg := sync.WaitGroup{}
-	ch1 := make(chan string)
-	ch2 := make(chan string)
+	ch1 := make(chan string) //all senders are blocked because of unbuffered channel
+	ch2 := make(chan string) //which caused deadlock between all goroutines
+	//senders are blocked if a channel is full
 
 	wg.Add(2)
 	go first(ch1, &wg)
 	go second(ch2, &wg)
+
+	wg.Wait()
 
 	for i := 0; i < 2; i++ {
 		select {
@@ -41,5 +44,4 @@ func as4() {
 			fmt.Printf("Received from channel 2: %s\n", msg2)
 		}
 	}
-	wg.Wait()
 }
