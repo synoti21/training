@@ -28,3 +28,7 @@ coverage.txt
 
 vendor/*
 !vendor/vendor.json
+
+pkg/*
+bin/*
+*.DS_Store
